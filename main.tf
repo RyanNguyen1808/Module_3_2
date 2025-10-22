@@ -29,10 +29,3 @@ locals {
 resource "aws_s3_bucket" "s3_tf" {
   bucket = "${local.name_prefix}-s3-tf-bkt-${local.account_id}"
 }
-
-# Enable access logging for the main bucket
-resource "aws_s3_bucket_logging" "s3_tf_logging" {
-  bucket        = aws_s3_bucket.s3_tf.id
-  target_bucket = aws_s3_bucket.s3_log_bucket.id
-  target_prefix = "log/"
-}
