@@ -26,7 +26,7 @@ locals {
   account_id  = data.aws_caller_identity.current.account_id
 }
 
-# checkov:skip=CKV_AWS_145 Reason: Ensure that S3 buckets are encrypted with KMS by default
 resource "aws_s3_bucket" "s3_tf" {
+  # checkov:skip=CKV_AWS_145:Ensure that S3 buckets are encrypted with KMS by default
   bucket = "${local.name_prefix}-s3-tf-bkt-${local.account_id}"
 }
